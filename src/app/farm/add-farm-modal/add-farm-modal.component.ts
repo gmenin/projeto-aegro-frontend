@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Farm } from 'src/app/interfaces/farm.model';
 import { FarmService } from 'src/app/service/farm.service';
 
 @Component({
@@ -7,15 +9,21 @@ import { FarmService } from 'src/app/service/farm.service';
   styleUrls: ['./add-farm-modal.component.css']
 })
 export class AddFarmModalComponent implements OnInit {
+  farmData: FormGroup = new FormGroup({}); 
 
   constructor(
+    private fb: FormBuilder,
     private farmService: FarmService) { }
 
   ngOnInit(): void {
+    this.farmData = this.fb.group({
+      name: ['']
+    });
   }
 
   addFarm(): void {
-    const farm = {'name': 'Fazenda DO zé'};
+    const farm: Farm = this.farmData.value;
+    
     this.farmService.addFarm(farm).subscribe({
       next: (responseData) => console.log(responseData),
       error: (e) => {

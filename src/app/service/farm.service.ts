@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Farm } from '../interfaces/farm';
+import { Farm } from '../interfaces/farm.model';
 import { API_URL } from '../utils/util';
 import { HttpService } from './http.service';
 
