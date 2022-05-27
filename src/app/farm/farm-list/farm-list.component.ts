@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddFarmModalComponent } from '../add-farm-modal/add-farm-modal.component';
 
 @Component({
   selector: 'app-farm-list',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FarmListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  openAddFarmModal() {
+    this.dialog
+      .open(AddFarmModalComponent, {
+        width: '600px',
+      });
+      // .afterClosed()
+      // .subscribe(async (response) => {
+      //   if(response.button === 'salvar'){
+      //     alert('Farm Saved!');
+      //   }
+      // })
   }
 
 }

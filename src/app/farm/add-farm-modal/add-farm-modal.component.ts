@@ -1,5 +1,7 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Farm } from 'src/app/interfaces/farm.model';
 import { FarmService } from 'src/app/service/farm.service';
 
@@ -13,7 +15,9 @@ export class AddFarmModalComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private farmService: FarmService) { }
+    private farmService: FarmService,
+    private dialogRef: MatDialogRef<AddFarmModalComponent>
+    ) { }
 
   ngOnInit(): void {
     this.farmData = this.fb.group({
@@ -30,6 +34,12 @@ export class AddFarmModalComponent implements OnInit {
         console.log(e);
         alert('Erro ao salvar Fazenda');}
     });
+
+    this.dialogRef.close({ button: 'salvar'});
+  }
+
+  closeDialog() {
+    this.dialogRef.close({ button: 'cancelar'});
   }
 
 }

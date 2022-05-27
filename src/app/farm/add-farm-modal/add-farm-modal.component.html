@@ -3,4 +3,9 @@
     <input type="text" id="name" formControlName="name">
 </form>
 
-<button (click)="addFarm()">Salvar</button>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancelar</button>
+    <button mat-button (click)="addFarm()">Salvar</button>
+</div>
+
+

@@ -1,12 +1,13 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AddFarmModalComponent } from "./farm/add-farm-modal/add-farm-modal.component";
+import { FarmListComponent } from "./farm/farm-list/farm-list.component";
 
 const routes: Routes = [
-    {   //PROVISORIO
-       path: 'farm-add',
-       component: AddFarmModalComponent
-    }
+    {   
+        path: '',
+        component: FarmListComponent
+     }
 ]
 
 @NgModule({
