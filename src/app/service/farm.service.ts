@@ -10,6 +10,14 @@ export class FarmService {
 
   constructor(private api: HttpService) { }
 
+  public getAllFarms() {
+    return this.api.get<Farm[]>(API_URL + '/farm/');
+  }
+
+  public getFarmById(id: string) {
+    return this.api.get<Farm[]>(API_URL + '/farm/' + id);
+  }
+
   public addFarm(farm: Farm) {
     return this.api.post<Farm>(API_URL + '/farm', farm);
   }

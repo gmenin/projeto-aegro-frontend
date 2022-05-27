@@ -1,1 +1,13 @@
 <button (click)="openAddFarmModal()">Nova Fazenda</button>
+
+<div *ngIf="farms.length == 0">
+    <p>Sem fazendas</p>
+</div>
+
+<div *ngIf="farms.length != 0">
+    <table>
+        <tr *ngFor="let farm of farms">
+            <td> {{ farm.name }} </td>
+        </tr>
+    </table>
+</div>
