@@ -25,4 +25,10 @@ export class HttpService {
       .post<T>(url, data, headers)
       .pipe(catchError(errorHandler));
   }
+
+  public put<T>(url: string, data: any): Observable<T> {
+    return this.http
+      .put<T>(url, data, headers)
+      .pipe(catchError(errorHandler));
+  }
 }

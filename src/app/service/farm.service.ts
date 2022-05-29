@@ -21,4 +21,8 @@ export class FarmService {
   public addFarm(farm: Farm) {
     return this.api.post<Farm>(API_URL + '/farm', farm);
   }
+
+  public updateFarm(id: string, farm: Farm) {
+    return this.api.put<Farm>(API_URL + '/farm/' + id, farm);
+  }
 }

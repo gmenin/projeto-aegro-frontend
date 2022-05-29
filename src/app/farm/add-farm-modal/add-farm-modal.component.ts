@@ -1,7 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Farm } from 'src/app/interfaces/farm.model';
 import { FarmService } from 'src/app/service/farm.service';
 
@@ -14,6 +14,7 @@ export class AddFarmModalComponent implements OnInit {
   farmData: FormGroup = new FormGroup({}); 
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: {farm: Farm},
     private fb: FormBuilder,
     private farmService: FarmService,
     private dialogRef: MatDialogRef<AddFarmModalComponent>
@@ -21,21 +22,43 @@ export class AddFarmModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.farmData = this.fb.group({
-      name: ['']
+      name: [this.data == null ? '' : this.data.farm.name]
     });
   }
 
   addFarm(): void {
     const farm: Farm = this.farmData.value;
-    
+  
+    if (this.data == null) {
+      // Create Farm
+      this.createFarm(farm);  
+    } else {  
+      // Update Farm
+      if (typeof this.data.farm.id != 'undefined'){
+        const id = this.data.farm.id;
+        this.updateFarm(id, farm);
+      }
+    }
+
+    this.dialogRef.close({ button: 'salvar'});
+  }
+
+  createFarm(farm: Farm): void {
     this.farmService.addFarm(farm).subscribe({
       next: (responseData) => console.log(responseData),
       error: (e) => {
         console.log(e);
         alert('Erro ao salvar Fazenda');}
-    });
+    });  
+  }
 
-    this.dialogRef.close({ button: 'salvar'});
+  updateFarm(id: string, farm: Farm): void {
+    this.farmService.updateFarm(id, farm).subscribe({
+      next: (responseData) => console.log(responseData),
+      error: (e) => {
+        console.log(e);
+        alert('Erro ao atualizar Fazenda');}
+    }); 
   }
 
   closeDialog() {

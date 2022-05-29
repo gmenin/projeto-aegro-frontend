@@ -32,19 +32,33 @@ export class FarmListComponent implements OnInit {
     })
   }
 
-  openAddFarmModal() {
-    this.dialog
-      .open(AddFarmModalComponent, {
-        width: '600px',
-      })
-      .afterClosed()
-      .subscribe(async (response) => {
-        if(response.button === 'salvar'){
-          this.getFarms();
-        }
-      })
+  openAddFarmModal(farm?: Farm) {
+    if (typeof farm === 'undefined'){
+      // Create Farm
+      this.dialog
+        .open(AddFarmModalComponent, {
+          width: '600px'
+        })
+        .afterClosed()
+        .subscribe(async (response) => {
+          if(response.button === 'salvar'){
+            this.getFarms();
+          }
+        })
+    } else {
+      // Update Farm
+      this.dialog
+        .open(AddFarmModalComponent, {
+          width: '600px',
+          data: {farm: farm}
+        })
+        .afterClosed()
+        .subscribe(async (response) => {
+          if(response.button === 'salvar'){
+            this.getFarms();
+          }
+        })
+    }
   }
-
-
 
 }
