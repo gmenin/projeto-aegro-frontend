@@ -25,4 +25,8 @@ export class FarmService {
   public updateFarm(id: string, farm: Farm) {
     return this.api.put<Farm>(API_URL + '/farm/' + id, farm);
   }
+
+  public deleteFarm(id: string) {
+    return this.api.delete<Farm>(API_URL + '/farm/' + id);
+  }
 }

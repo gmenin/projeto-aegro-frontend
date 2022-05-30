@@ -31,4 +31,10 @@ export class HttpService {
       .put<T>(url, data, headers)
       .pipe(catchError(errorHandler));
   }
+
+  public delete<T>(url: string): Observable<T> {
+    return this.http
+      .delete<T>(url)
+      .pipe(catchError(errorHandler));
+  }
 }

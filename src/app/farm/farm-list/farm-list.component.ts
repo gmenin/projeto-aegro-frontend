@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Farm } from 'src/app/interfaces/farm.model';
 import { FarmService } from 'src/app/service/farm.service';
 import { AddFarmModalComponent } from '../add-farm-modal/add-farm-modal.component';
+import { DeleteFarmModalComponent } from '../delete-farm-modal/delete-farm-modal.component';
 
 @Component({
   selector: 'app-farm-list',
@@ -22,7 +23,7 @@ export class FarmListComponent implements OnInit {
     this.getFarms();
   }
 
-  public getFarms() {
+  public getFarms(): void {
     this.farmService.getAllFarms().subscribe({
       next: (responseData) => {
         console.log(responseData);
@@ -32,7 +33,7 @@ export class FarmListComponent implements OnInit {
     })
   }
 
-  openAddFarmModal(farm?: Farm) {
+  openAddFarmModal(farm?: Farm): void {
     if (typeof farm === 'undefined'){
       // Create Farm
       this.dialog
@@ -59,6 +60,19 @@ export class FarmListComponent implements OnInit {
           }
         })
     }
+  }
+
+  openDeleteFarmModal(farm: Farm): void {
+    this.dialog.open(DeleteFarmModalComponent, {
+      width: '600px',
+      data: {farm: farm}
+    })
+    .afterClosed()
+    .subscribe(async (response) => {
+      if(response.button === 'deletar'){
+        this.farms = this.farms.filter(obj => obj !== farm);
+      }
+    })
   }
 
 }
