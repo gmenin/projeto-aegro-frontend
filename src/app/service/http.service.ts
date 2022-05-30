@@ -14,6 +14,12 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
+  public get<T>(url: string): Observable<T> {
+    return this.http
+      .get<T>(url)
+      .pipe(catchError(errorHandler));
+  }
+
   public post<T>(url: string, data: any): Observable<T> {
     return this.http
       .post<T>(url, data, headers)
