@@ -9,7 +9,7 @@
         <tr *ngFor="let farm of farms">
             <td> {{ farm.name }} </td>
             <td><button (click)="openAddFarmModal(farm)">edit</button></td>
-            <td><button>delete</button></td>
+            <td><button (click)="openDeleteFarmModal(farm)">delete</button></td>
         </tr>
     </table>
 </div>

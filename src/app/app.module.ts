@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { FarmListComponent } from './farm/farm-list/farm-list.component';
 import { AddFarmModalComponent } from './farm/add-farm-modal/add-farm-modal.component';
+import { DeleteFarmModalComponent } from './farm/delete-farm-modal/delete-farm-modal.component';
 
 
 
@@ -16,7 +17,8 @@ import { AddFarmModalComponent } from './farm/add-farm-modal/add-farm-modal.comp
   declarations: [
     AppComponent,
     FarmListComponent,
-    AddFarmModalComponent
+    AddFarmModalComponent,
+    DeleteFarmModalComponent
   ],
   imports: [
     BrowserModule,
