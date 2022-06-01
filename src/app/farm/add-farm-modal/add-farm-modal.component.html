@@ -1,11 +1,15 @@
-<form [formGroup]="farmData">
-    <label>Nome:</label>
-    <input type="text" id="name" formControlName="name"> 
-</form>
+<div>
+  <p class="dialog-title">Nova Fazenda</p>
 
-<div mat-dialog-actions>
-    <button mat-button (click)="closeDialog()">Cancelar</button>
-    <button mat-button (click)="addFarm()">Salvar</button>
+  <form class="form-dialog" [formGroup]="farmData">
+      <input type="text" id="name" formControlName="name" placeholder="Nome *">
+  </form>
+
+  <div mat-dialog-actions class="dialog-div-buttons">
+      <button mat-button (click)="closeDialog()" class="secondary-button">Cancelar</button>
+      <button mat-button (click)="addFarm()" class="main-button">Salvar</button>
+  </div>
 </div>
+
 
 
