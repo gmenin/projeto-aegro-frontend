@@ -145,6 +145,15 @@ body {
   margin: 0;
 }
 
+.dialog-content {
+  margin: 2em 0;
+  font-weight: 600;
+  font-size: 1.1em;
+  text-align: justify;
+  text-justify: inter-word;
+  color: var(--secondary-color);
+}
+
 .form-dialog {
   margin: 4em 0;
 }
@@ -175,6 +184,11 @@ body {
   display: inline-flex;
   align-items: center;
   transition: 0.5s all;
+}
+
+.dialog-div-buttons .secondary-button:hover {
+  background-color: var(--light-secondary-color);
+  cursor: pointer;
 }
 
 .dialog-div-buttons .main-button::before {
