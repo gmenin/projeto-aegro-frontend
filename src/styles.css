@@ -1,4 +1,140 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --primary-color: #00d361;
+    --dark-primary-color: #00a94d;
+    --secondary-color: #757575;
+    --light-secondary-color: #ececec;
+    --alternative-light-secondary-color: #f8f7f6;
+}
+
+html, body { height: 100%; font-family: Nunito, sans-serif;}
+body {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-content {
+    width: 70vw;
+    min-height: 80vh;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    border-radius: 15px;
+    border: 1px solid var(--light-secondary-color);
+    padding: 40px 30px;
+    box-sizing: border-box;
+}
+
+.div-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5em;
+    align-items: center;
+}
+
+.main-title {
+    font-size: 18px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.main-button {
+    background-color: var(--primary-color);
+    height:40px;
+    padding: 0 10px;
+    border-style: none;
+    border-radius: 2px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: Nunito, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.5s all;
+}
+
+.main-button:hover {
+    background-color: var(--dark-primary-color);
+    cursor: pointer;
+}
+
+.main-button::before {
+    content: "+";
+    color: white;
+    font-size: 25px;
+    margin: 0 10px;
+}
+
+.table-list {
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.2em;
+  border-collapse: collapse;
+}
+
+.table-list tr {
+  height: 5em;
+  transition: 0.4s all;
+  border-bottom: 2px solid var(--light-secondary-color);
+}
+
+.table-list tr:hover {
+  background-color: var(--alternative-light-secondary-color);
+}
+
+.table-list tr:last-of-type {
+  border-style: none;
+}
+
+.table-list td {
+  text-align: center;
+  padding: 0 5px;
+}
+
+.table-list td:nth-child(2) {
+  width: 80%;
+  text-align: start;
+  padding-left: 20px;
+}
+
+.icon {
+  vertical-align: middle;
+  color: var(--secondary-color);
+}
+
+.static {
+  padding: 5px;
+  border-radius: 5px;
+  transition: 0.4s all;
+}
+
+.table-list tr:hover .static {
+  background-color: var(--light-secondary-color);
+}
+
+.action {
+  vertical-align: middle;
+}
+
+.action:hover {
+  cursor: pointer;
+}
+
+.ghost {
+  visibility: hidden;
+  transition: 0.1s all;
+}
+
+.table-list tr:hover .ghost {
+  visibility: visible;
+}
+
+
+
+

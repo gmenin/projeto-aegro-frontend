@@ -1,15 +1,26 @@
-<button (click)="openAddFarmModal()">Nova Fazenda</button>
+<div class="main-content">
+    <div class="div-title">
+        <p class="main-title">Fazendas</p>
+        <button class="main-button" (click)="openAddFarmModal()">Nova Fazenda</button>
+    </div>
+    <div *ngIf="farms.length == 0">
+        <p>Sem fazendas</p>
+    </div>
 
-<div *ngIf="farms.length == 0">
-    <p>Sem fazendas</p>
+    <div *ngIf="farms.length != 0">
+      <div *ngIf="farms.length != 0">
+        <table class="table-list">
+            <tr *ngFor="let farm of farms">
+                <td><mat-icon class="icon static" aria-label="home">home</mat-icon></td>
+                <td> {{ farm.name }} </td>
+                <td><mat-icon class="icon action ghost" aria-label="edit" (click)="openAddFarmModal(farm)">edit</mat-icon> </td>
+                <td><mat-icon class="icon action ghost" aria-label="delete" (click)="openDeleteFarmModal(farm)">delete</mat-icon></td>
+                <td><mat-icon class="icon action" aria-label="arrow-right">keyboard_arrow_right</mat-icon></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+
 </div>
 
-<div *ngIf="farms.length != 0">
-    <table>
-        <tr *ngFor="let farm of farms">
-            <td> {{ farm.name }} </td>
-            <td><button (click)="openAddFarmModal(farm)">edit</button></td>
-            <td><button (click)="openDeleteFarmModal(farm)">delete</button></td>
-        </tr>
-    </table>
-</div>
+

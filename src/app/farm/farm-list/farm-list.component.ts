@@ -12,6 +12,7 @@ import { DeleteFarmModalComponent } from '../delete-farm-modal/delete-farm-modal
 })
 export class FarmListComponent implements OnInit {
 
+  displayedColumns: string[] = ['icon','name'];
   farms: Farm[] = [];
 
   constructor(
@@ -38,7 +39,7 @@ export class FarmListComponent implements OnInit {
       // Create Farm
       this.dialog
         .open(AddFarmModalComponent, {
-          width: '600px'
+          width: '30vw'
         })
         .afterClosed()
         .subscribe(async (response) => {
@@ -50,7 +51,7 @@ export class FarmListComponent implements OnInit {
       // Update Farm
       this.dialog
         .open(AddFarmModalComponent, {
-          width: '600px',
+          width: '30vw',
           data: {farm: farm}
         })
         .afterClosed()
@@ -64,7 +65,7 @@ export class FarmListComponent implements OnInit {
 
   openDeleteFarmModal(farm: Farm): void {
     this.dialog.open(DeleteFarmModalComponent, {
-      width: '600px',
+      width: '30vw',
       data: {farm: farm}
     })
     .afterClosed()
