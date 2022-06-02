@@ -1,7 +1,11 @@
-<h1>Deletar {{farm.name}}</h1>
-<p>Deletar a {{farm.name}} fará com que todos os seus itens sejam removidos. Deseja continuar?</p>
+<div>
+  <p class="dialog-title">Deletar {{farm.name}}</p>
 
-<div mat-dialog-actions>
-    <button mat-button (click)="closeDialog()">Cancelar</button>
-    <button mat-button (click)="deleteFarm()">Deletar</button>
+  <p class="dialog-content">Deletar a {{farm.name}} fará com que todos os seus itens sejam removidos. Deseja continuar?</p>
+
+  <div mat-dialog-actions class="dialog-div-buttons">
+    <button mat-button (click)="closeDialog()" class="secondary-button">Cancelar</button>
+    <button mat-button (click)="deleteFarm()" class="main-button">Deletar</button>
+  </div>
+
 </div>
