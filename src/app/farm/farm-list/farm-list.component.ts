@@ -39,7 +39,8 @@ export class FarmListComponent implements OnInit {
       // Create Farm
       this.dialog
         .open(AddFarmModalComponent, {
-          width: '30vw'
+          width: '30vw',
+          disableClose: true
         })
         .afterClosed()
         .subscribe(async (response) => {
@@ -52,6 +53,7 @@ export class FarmListComponent implements OnInit {
       this.dialog
         .open(AddFarmModalComponent, {
           width: '30vw',
+          disableClose: true,
           data: {farm: farm}
         })
         .afterClosed()
@@ -66,6 +68,8 @@ export class FarmListComponent implements OnInit {
   openDeleteFarmModal(farm: Farm): void {
     this.dialog.open(DeleteFarmModalComponent, {
       width: '30vw',
+      disableClose: true,
+      autoFocus: false,
       data: {farm: farm}
     })
     .afterClosed()
