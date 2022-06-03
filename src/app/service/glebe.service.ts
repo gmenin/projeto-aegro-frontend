@@ -14,6 +14,10 @@ export class GlebeService {
     return this.api.get<Glebe[]>(API_URL + '/farm/' + farmId + '/glebe');
   }
 
+  public getGlebeById(id: string) {
+    return this.api.get<Glebe>(API_URL + '/glebe/' + id);
+  }
+
   public addGlebe(farmId: string, glebe: Glebe) {
     return this.api.post<Glebe>(API_URL + '/farm/' + farmId + '/glebe', glebe);
   }

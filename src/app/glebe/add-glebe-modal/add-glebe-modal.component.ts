@@ -41,7 +41,7 @@ export class AddGlebeModalComponent implements OnInit {
     }
   }
 
-  createGlebe(glebe: Glebe) {
+  createGlebe(glebe: Glebe): void {
     this.glebeService.addGlebe(this.data.farmId, glebe).subscribe({
       next: (responseData) => console.log(responseData),
       error: (e) => {

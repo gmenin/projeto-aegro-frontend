@@ -1,6 +1,6 @@
 <div class="main-content">
   <div class="content-header">
-    <mat-icon class="icon action" aria-label="arrow-right">keyboard_arrow_left</mat-icon>
+    <mat-icon class="icon action" aria-label="arrow-left">keyboard_arrow_left</mat-icon>
     <h1>{{farm?.name}}</h1>
     <div class="detail">
       <p class="detail-subtitle">Produtividade</p>
@@ -28,7 +28,7 @@
           </td>
           <td><mat-icon class="icon action ghost" aria-label="edit" (click)="openAddGlebeModal(glebe)">edit</mat-icon> </td>
           <td><mat-icon class="icon action ghost" aria-label="delete" (click)="openDeleteGlebeModal(glebe)">delete</mat-icon></td>
-          <td><mat-icon class="icon action" aria-label="arrow-right">keyboard_arrow_right</mat-icon></td>
+          <td><mat-icon class="icon action" aria-label="arrow-right" [routerLink]="['/glebe-detail', glebe.id]">keyboard_arrow_right</mat-icon></td>
       </tr>
     </table>
   </div>

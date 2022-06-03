@@ -23,7 +23,7 @@ export class GlebeListComponent implements OnInit {
     private glebeService: GlebeService,
     private farmService: FarmService,
     private activatedRoute: ActivatedRoute,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {

@@ -14,7 +14,7 @@
               <td> {{ farm.name }} </td>
               <td><mat-icon class="icon action ghost" aria-label="edit" (click)="openAddFarmModal(farm)">edit</mat-icon> </td>
               <td><mat-icon class="icon action ghost" aria-label="delete" (click)="openDeleteFarmModal(farm)">delete</mat-icon></td>
-              <td><mat-icon class="icon action" aria-label="arrow-right" [routerLink]="['farm-detail', farm.id]">keyboard_arrow_right</mat-icon></td>
+              <td><mat-icon class="icon action" aria-label="arrow-right" [routerLink]="['/farm-detail', farm.id]">keyboard_arrow_right</mat-icon></td>
           </tr>
       </table>
     </div>
