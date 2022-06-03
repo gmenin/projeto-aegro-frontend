@@ -1,17 +1,36 @@
-<p> {{glebe?.name}} </p>
+<div class="main-content">
+  <div class="content-header">
+    <mat-icon class="icon action" aria-label="arrow-left">keyboard_arrow_left</mat-icon>
+    <h1> {{glebe?.name}} </h1>
+    <div class="detail">
+      <p class="detail-subtitle">Produtividade</p>
+      <p class="detail-title">{{glebe?.productivity}}</p>
+    </div>
+  </div>
+  <div class="div-title">
+    <p class="main-title">Produção</p>
+    <button class="main-button" (click)="openAddProductionModal()">Nova Produção</button>
+  </div>
 
-<button (click)="openAddProductionModal()">nova produção</button>
+  <div *ngIf="productions.length == 0">
+    <p>Sem produções</p>
+  </div>
 
-<div *ngIf="productions.length == 0">
-  <p>Sem produções</p>
-</div>
-
-<div *ngIf="productions.length != 0">
-  <table>
+  <div *ngIf="productions.length != 0">
+    <table class="table-list">
       <tr *ngFor="let production of productions">
-          <td> {{ production.amount }} </td>
-          <td><button (click)="openAddProductionModal(production)">editar</button></td>
-          <td><button (click)="openDeleteProductionModal(production)">deletar</button></td>
+          <td><mat-icon class="icon static" aria-label="home">map</mat-icon></td>
+          <td>
+            <div>
+              <p class="detail-title"> {{ production.amount }} kg </p>
+              <p class="detail-subtitle"> Produzido </p>
+            </div>
+          </td>
+          <td><mat-icon class="icon action ghost" aria-label="edit" (click)="openAddProductionModal(production)">edit</mat-icon> </td>
+          <td><mat-icon class="icon action ghost" aria-label="delete" (click)="openDeleteProductionModal(production)">delete</mat-icon></td>
       </tr>
-  </table>
+    </table>
+  </div>
+
 </div>
+

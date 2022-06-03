@@ -1,6 +1,12 @@
-<p>Tem certeza que deseja deletar a produção de {{ production.amount }}kg?</p>
+<div>
 
-<div mat-dialog-actions>
-    <button mat-button (click)="closeDialog()">Cancelar</button>
-    <button mat-button (click)="deleteProduction()">Deletar</button>
+  <p class="dialog-title">Deletar produção</p>
+
+  <p class="dialog-content">Tem certeza que deseja deletar a produção de {{ production.amount }} kg?</p>
+
+  <div mat-dialog-actions class="dialog-div-buttons">
+    <button mat-button (click)="closeDialog()" class="secondary-button">Cancelar</button>
+    <button mat-button (click)="deleteProduction()" class="main-button">Deletar</button>
+  </div>
+
 </div>
