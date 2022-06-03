@@ -17,4 +17,8 @@ export class ProductionService {
   public addProduction(glebeId: string, production: Production) {
     return this.api.post<Production>(API_URL + '/glebe/' + glebeId + '/production', production);
   }
+
+  public updateProduction(id: string, production: Production) {
+    return this.api.put<Production>(API_URL + '/production/' + id, production);
+  }
 }

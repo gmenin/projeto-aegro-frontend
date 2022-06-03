@@ -58,12 +58,12 @@ export class ProductionListComponent implements OnInit {
     }
   }
 
-  openAddProductionModal(): void {
+  openAddProductionModal(production?: Production): void {
     this.dialog
       .open(AddProductionModalComponent, {
         width: '30vw',
         disableClose: true,
-        data: {glebeId: this.glebeId}
+        data: {glebeId: this.glebeId, production: production}
       })
       .afterClosed()
       .subscribe(async (response) => {

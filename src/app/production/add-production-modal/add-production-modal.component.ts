@@ -13,7 +13,7 @@ export class AddProductionModalComponent implements OnInit {
   productionData: FormGroup = new FormGroup({});
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {glebeId: string},
+    @Inject(MAT_DIALOG_DATA) public data: {glebeId: string, production: Production},
     private fb: FormBuilder,
     private productionService: ProductionService,
     private dialogRef: MatDialogRef<AddProductionModalComponent>
@@ -21,15 +21,23 @@ export class AddProductionModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.productionData = this.fb.group({
-      amount: ['']
+      amount: [this.data.production == null ? '' : this.data.production.amount]
     });
   }
 
   addProduction(): void {
     const production: Production = this.productionData.value;
 
-    // Create Glebe
-    this.createProduction(production);
+    if (this.data.production == null) {
+      // Create Production
+      this.createProduction(production);
+    } else {
+      // Update Production
+      if (typeof this.data.production.id != 'undefined'){
+        const id = this.data.production.id;
+        this.updateProduction(id, production);
+      }
+    }
 
   }
 
@@ -39,6 +47,20 @@ export class AddProductionModalComponent implements OnInit {
       error: (e) => {
         console.log(e);
         alert('Erro ao salvar Produção');
+      },
+      complete: () => {
+        console.log("Completed"),
+        this.dialogRef.close({ button: 'salvar'});
+      }
+    });
+  }
+
+  updateProduction(id: string, production: Production): void {
+    this.productionService.updateProduction(id, production).subscribe({
+      next: (responseData) => console.log(responseData),
+      error: (e) => {
+        console.log(e);
+        alert('Erro ao atualizar Produção');
       },
       complete: () => {
         console.log("Completed"),

@@ -10,6 +10,7 @@
   <table>
       <tr *ngFor="let production of productions">
           <td> {{ production.amount }} </td>
+          <td><button (click)="openAddProductionModal(production)">editar</button></td>
       </tr>
   </table>
 </div>
