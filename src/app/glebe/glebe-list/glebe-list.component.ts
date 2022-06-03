@@ -69,6 +69,7 @@ export class GlebeListComponent implements OnInit {
       .afterClosed()
       .subscribe(async (response) => {
         if(response.button === 'salvar'){
+          this.getFarm();
           this.getGlebes();
         }
       })
@@ -85,6 +86,7 @@ export class GlebeListComponent implements OnInit {
     .subscribe(async (response) => {
       if(response.button === 'deletar'){
         this.glebes = this.glebes.filter(obj => obj !== glebe);
+        this.getFarm();
       }
     })
   }
