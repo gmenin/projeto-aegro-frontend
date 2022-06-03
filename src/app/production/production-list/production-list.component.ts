@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Glebe } from 'src/app/interfaces/glebe.model';
 import { Production } from 'src/app/interfaces/production.model';
 import { GlebeService } from 'src/app/service/glebe.service';
 import { ProductionService } from 'src/app/service/production.service';
+import { AddProductionModalComponent } from '../add-production-modal/add-production-modal.component';
 
 @Component({
   selector: 'app-production-list',
@@ -19,14 +21,15 @@ export class ProductionListComponent implements OnInit {
   constructor(
     private productionService: ProductionService,
     private glebeService: GlebeService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.glebeId = this.activatedRoute.snapshot.params['id'];
 
     this.getGlebe();
-    this.getProductions;
+    this.getProductions();
   }
 
   getGlebe(): void {
@@ -53,6 +56,21 @@ export class ProductionListComponent implements OnInit {
         complete: () => console.log("Completed")
       })
     }
+  }
+
+  openAddProductionModal(): void {
+    this.dialog
+      .open(AddProductionModalComponent, {
+        width: '30vw',
+        disableClose: true,
+        data: {glebeId: this.glebeId}
+      })
+      .afterClosed()
+      .subscribe(async (response) => {
+        if(response.button === 'salvar'){
+          this.getProductions();
+        }
+      })
   }
 
 }

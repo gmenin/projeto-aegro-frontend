@@ -1,4 +1,6 @@
-<p> {{glebe.name}} </p>
+<p> {{glebe?.name}} </p>
+
+<button (click)="openAddProductionModal()">nova produção</button>
 
 <div *ngIf="productions.length == 0">
   <p>Sem produções</p>

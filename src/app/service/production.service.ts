@@ -13,4 +13,8 @@ export class ProductionService {
   public getAllProductions(glebeId: string) {
     return this.api.get<Production[]>(API_URL + '/glebe/' + glebeId + '/production');
   }
+
+  public addProduction(glebeId: string, production: Production) {
+    return this.api.post<Production>(API_URL + '/glebe/' + glebeId + '/production', production);
+  }
 }
