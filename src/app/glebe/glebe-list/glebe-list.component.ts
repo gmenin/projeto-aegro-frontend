@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Farm } from 'src/app/interfaces/farm.model';
 import { Glebe } from 'src/app/interfaces/glebe.model';
 import { FarmService } from 'src/app/service/farm.service';
 import { GlebeService } from 'src/app/service/glebe.service';
+import { AddGlebeModalComponent } from '../add-glebe-modal/add-glebe-modal.component';
 
 @Component({
   selector: 'app-glebe-list',
@@ -12,24 +14,27 @@ import { GlebeService } from 'src/app/service/glebe.service';
 })
 export class GlebeListComponent implements OnInit {
 
-  farmId = this.activatedRoute.snapshot.params['id'];
-  farm: Farm | undefined;
+  farmId!: string;
+  farm!: Farm;
   glebes: Glebe[] = [];
 
   constructor(
     private glebeService: GlebeService,
     private farmService: FarmService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    this.getFarm(this.farmId);
-    this.getGlebes(this.farmId);
+    this.farmId = this.activatedRoute.snapshot.params['id'];
+
+    this.getFarm();
+    this.getGlebes();
   }
 
-  public getFarm(id: string): void {
-    if(id){
-      this.farmService.getFarmById(id).subscribe({
+  getFarm(): void {
+    if(this.farmId){
+      this.farmService.getFarmById(this.farmId).subscribe({
         next: (responseData) => {
           console.log(responseData);
           this.farm = responseData;
@@ -40,9 +45,9 @@ export class GlebeListComponent implements OnInit {
     }
   }
 
-  public getGlebes(farmId: string): void {
-    if(farmId){
-      this.glebeService.getAllGlebes(farmId).subscribe({
+  getGlebes(): void {
+    if(this.farmId){
+      this.glebeService.getAllGlebes(this.farmId).subscribe({
         next: (responseData) => {
           console.log(responseData);
           this.glebes = responseData;
@@ -51,6 +56,22 @@ export class GlebeListComponent implements OnInit {
         complete: () => console.log("Completed")
       })
     }
+  }
+
+  openAddGlebeModal(): void {
+    // Create Glebe
+    this.dialog
+      .open(AddGlebeModalComponent, {
+        width: '30vw',
+        disableClose: true,
+        data: {farmId: this.farmId}
+      })
+      .afterClosed()
+      .subscribe(async (response) => {
+        if(response.button === 'salvar'){
+          this.getGlebes();
+        }
+      })
   }
 
 }

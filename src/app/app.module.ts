@@ -13,6 +13,7 @@ import { FarmListComponent } from './farm/farm-list/farm-list.component';
 import { AddFarmModalComponent } from './farm/add-farm-modal/add-farm-modal.component';
 import { DeleteFarmModalComponent } from './farm/delete-farm-modal/delete-farm-modal.component';
 import { GlebeListComponent } from './glebe/glebe-list/glebe-list.component';
+import { AddGlebeModalComponent } from './glebe/add-glebe-modal/add-glebe-modal.component';
 
 
 
@@ -22,7 +23,8 @@ import { GlebeListComponent } from './glebe/glebe-list/glebe-list.component';
     FarmListComponent,
     AddFarmModalComponent,
     DeleteFarmModalComponent,
-    GlebeListComponent
+    GlebeListComponent,
+    AddGlebeModalComponent
   ],
   imports: [
     BrowserModule,

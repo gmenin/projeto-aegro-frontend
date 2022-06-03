@@ -1,7 +1,9 @@
 <p>{{farm?.name}}</p>
 
+<button (click)="openAddGlebeModal()">novo talhão</button>
+
 <div *ngIf="glebes.length == 0">
-  <p>Sem fazendas</p>
+  <p>Sem talhões</p>
 </div>
 
 <div *ngIf="glebes.length != 0">

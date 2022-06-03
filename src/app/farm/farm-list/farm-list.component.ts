@@ -24,7 +24,7 @@ export class FarmListComponent implements OnInit {
     this.getFarms();
   }
 
-  public getFarms(): void {
+  getFarms(): void {
     this.farmService.getAllFarms().subscribe({
       next: (responseData) => {
         console.log(responseData);

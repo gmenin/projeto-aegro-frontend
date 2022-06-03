@@ -20,7 +20,7 @@ export class DeleteFarmModalComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public deleteFarm(): void {
+  deleteFarm(): void {
     this.farmService.deleteFarm(this.farm.id!).subscribe({
       next: (responseData) => {
         console.log(responseData),
