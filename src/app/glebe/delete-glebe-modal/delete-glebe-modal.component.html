@@ -1,7 +1,11 @@
-<h1>Deletar {{glebe.name}}</h1>
-<p>Deletar {{glebe.name}} fará com que todas as suas produções sejam removidos. Deseja continuar?</p>
+<div>
+  <p class="dialog-title">Deletar {{glebe.name}}</p>
 
-<div mat-dialog-actions>
-    <button mat-button (click)="closeDialog()">Cancelar</button>
-    <button mat-button (click)="deleteGlebe()">Deletar</button>
+  <p class="dialog-content">Deletar {{glebe.name}} fará com que todas as suas produções sejam removidas. Deseja continuar?</p>
+
+  <div mat-dialog-actions class="dialog-div-buttons">
+    <button mat-button (click)="closeDialog()" class="secondary-button">Cancelar</button>
+    <button mat-button (click)="deleteGlebe()" class="main-button">Deletar</button>
+  </div>
+
 </div>

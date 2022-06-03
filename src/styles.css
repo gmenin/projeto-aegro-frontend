@@ -31,6 +31,55 @@ body {
     box-sizing: border-box;
 }
 
+.content-header {
+  padding-top: 0;
+  padding-bottom: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  border-bottom: 1px solid var(--light-secondary-color);
+  margin-bottom: 2em;
+}
+
+.content-header .icon {
+  transform: scale(2);
+  margin: 0 1em;
+}
+
+.content-header h1 {
+  font-size: 3em;
+}
+
+.detail {
+  margin-left: 4em;
+}
+
+.detail-title {
+  margin: 0;
+}
+
+.content-header .detail-title {
+  font-size: 1.3em;
+}
+
+.detail-subtitle {
+  margin: 0;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.content-header .detail-subtitle {
+  font-size: 1em;
+}
+
+.table-list .detail-subtitle {
+  font-size: 0.8em;
+}
+
+.content-header .detail-title::after {
+  content: " kg/ha";
+}
+
 .div-title {
     width: 100%;
     display: flex;
@@ -155,7 +204,8 @@ body {
 }
 
 .form-dialog {
-  margin: 4em 0;
+  margin-top: 4em;
+  margin-bottom: 2em;
 }
 
 .form-dialog input {
@@ -166,6 +216,7 @@ body {
   color: black;
   font-size: 1.3em;
   height: 2em;
+  margin-bottom: 2em;
 }
 
 .dialog-div-buttons {

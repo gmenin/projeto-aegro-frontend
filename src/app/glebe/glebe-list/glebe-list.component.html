@@ -1,17 +1,36 @@
-<p>{{farm?.name}}</p>
+<div class="main-content">
+  <div class="content-header">
+    <mat-icon class="icon action" aria-label="arrow-right">keyboard_arrow_left</mat-icon>
+    <h1>{{farm?.name}}</h1>
+    <div class="detail">
+      <p class="detail-subtitle">Produtividade</p>
+      <p class="detail-title">{{farm?.productivity}}</p>
+    </div>
+  </div>
+  <div class="div-title">
+    <p class="main-title">Talhões da Fazenda</p>
+    <button class="main-button" (click)="openAddGlebeModal()">Novo Talhão</button>
+  </div>
 
-<button (click)="openAddGlebeModal()">novo talhão</button>
+  <div *ngIf="glebes.length == 0">
+    <p>Sem talhões</p>
+  </div>
 
-<div *ngIf="glebes.length == 0">
-  <p>Sem talhões</p>
-</div>
-
-<div *ngIf="glebes.length != 0">
-  <table>
+  <div *ngIf="glebes.length != 0">
+    <table class="table-list">
       <tr *ngFor="let glebe of glebes">
-          <td> {{ glebe.name }} </td>
-          <td><button (click)="openAddGlebeModal(glebe)">editar</button></td>
-          <td><button (click)="openDeleteGlebeModal(glebe)">excluir</button></td>
+          <td><mat-icon class="icon static" aria-label="home">map</mat-icon></td>
+          <td>
+            <div>
+              <p class="detail-title"> {{ glebe.name }} </p>
+              <p class="detail-subtitle"> {{ glebe.area }} ha </p>
+            </div>
+          </td>
+          <td><mat-icon class="icon action ghost" aria-label="edit" (click)="openAddGlebeModal(glebe)">edit</mat-icon> </td>
+          <td><mat-icon class="icon action ghost" aria-label="delete" (click)="openDeleteGlebeModal(glebe)">delete</mat-icon></td>
+          <td><mat-icon class="icon action" aria-label="arrow-right">keyboard_arrow_right</mat-icon></td>
       </tr>
-  </table>
+    </table>
+  </div>
+
 </div>
