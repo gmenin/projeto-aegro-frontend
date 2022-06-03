@@ -6,6 +6,7 @@ import { Production } from 'src/app/interfaces/production.model';
 import { GlebeService } from 'src/app/service/glebe.service';
 import { ProductionService } from 'src/app/service/production.service';
 import { AddProductionModalComponent } from '../add-production-modal/add-production-modal.component';
+import { DeleteProductionModalComponent } from '../delete-production-modal/delete-production-modal.component';
 
 @Component({
   selector: 'app-production-list',
@@ -71,6 +72,21 @@ export class ProductionListComponent implements OnInit {
           this.getProductions();
         }
       })
+  }
+
+  openDeleteProductionModal(production: Production): void {
+    this.dialog.open(DeleteProductionModalComponent, {
+      width: '30vw',
+      disableClose: true,
+      autoFocus: false,
+      data: {production: production}
+    })
+    .afterClosed()
+    .subscribe(async (response) => {
+      if(response.button === 'deletar'){
+        this.productions = this.productions.filter(obj => obj !== production);
+      }
+    })
   }
 
 }

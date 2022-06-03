@@ -11,6 +11,7 @@
       <tr *ngFor="let production of productions">
           <td> {{ production.amount }} </td>
           <td><button (click)="openAddProductionModal(production)">editar</button></td>
+          <td><button (click)="openDeleteProductionModal(production)">deletar</button></td>
       </tr>
   </table>
 </div>

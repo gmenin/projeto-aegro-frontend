@@ -21,4 +21,8 @@ export class ProductionService {
   public updateProduction(id: string, production: Production) {
     return this.api.put<Production>(API_URL + '/production/' + id, production);
   }
+
+  public deleteProduction(id: string) {
+    return this.api.delete<Production>(API_URL + '/production/' + id);
+  }
 }
