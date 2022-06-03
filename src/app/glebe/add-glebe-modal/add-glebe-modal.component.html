@@ -1,11 +1,13 @@
-<form [formGroup]="glebeData">
-  <label>Nome:</label>
-  <input type="text" id="name" formControlName="name">
-  <label>Area:</label>
-  <input type="number" id="area" formControlName="area">
-</form>
+<div>
+  <p class="dialog-title">Novo talhão</p>
 
-<div mat-dialog-actions>
-  <button mat-button (click)="closeDialog()">Cancelar</button>
-  <button mat-button (click)="addGlebe()">Salvar</button>
+  <form class="form-dialog" [formGroup]="glebeData">
+    <input type="text" id="name" formControlName="name" placeholder="Nome *">
+    <input type="number" id="area" formControlName="area" placeholder="Tamanho (ha) *">
+  </form>
+
+  <div mat-dialog-actions class="dialog-div-buttons">
+      <button mat-button (click)="closeDialog()" class="secondary-button">Cancelar</button>
+      <button mat-button (click)="addGlebe()" class="main-button">Salvar</button>
+  </div>
 </div>
