@@ -14,6 +14,7 @@ import { AddFarmModalComponent } from './farm/add-farm-modal/add-farm-modal.comp
 import { DeleteFarmModalComponent } from './farm/delete-farm-modal/delete-farm-modal.component';
 import { GlebeListComponent } from './glebe/glebe-list/glebe-list.component';
 import { AddGlebeModalComponent } from './glebe/add-glebe-modal/add-glebe-modal.component';
+import { DeleteGlebeModalComponent } from './glebe/delete-glebe-modal/delete-glebe-modal.component';
 
 
 
@@ -24,7 +25,8 @@ import { AddGlebeModalComponent } from './glebe/add-glebe-modal/add-glebe-modal.
     AddFarmModalComponent,
     DeleteFarmModalComponent,
     GlebeListComponent,
-    AddGlebeModalComponent
+    AddGlebeModalComponent,
+    DeleteGlebeModalComponent
   ],
   imports: [
     BrowserModule,

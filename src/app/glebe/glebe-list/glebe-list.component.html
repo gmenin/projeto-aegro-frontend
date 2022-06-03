@@ -11,6 +11,7 @@
       <tr *ngFor="let glebe of glebes">
           <td> {{ glebe.name }} </td>
           <td><button (click)="openAddGlebeModal(glebe)">editar</button></td>
+          <td><button (click)="openDeleteGlebeModal(glebe)">excluir</button></td>
       </tr>
   </table>
 </div>

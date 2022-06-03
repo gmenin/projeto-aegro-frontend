@@ -21,4 +21,8 @@ export class GlebeService {
   public updateGlebe(id: string, glebe: Glebe) {
     return this.api.put<Glebe>(API_URL + '/glebe/' + id, glebe);
   }
+
+  public deleteGlebe(id: string) {
+    return this.api.delete<Glebe>(API_URL + '/glebe/' + id);
+  }
 }

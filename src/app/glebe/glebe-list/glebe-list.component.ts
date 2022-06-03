@@ -6,6 +6,7 @@ import { Glebe } from 'src/app/interfaces/glebe.model';
 import { FarmService } from 'src/app/service/farm.service';
 import { GlebeService } from 'src/app/service/glebe.service';
 import { AddGlebeModalComponent } from '../add-glebe-modal/add-glebe-modal.component';
+import { DeleteGlebeModalComponent } from '../delete-glebe-modal/delete-glebe-modal.component';
 
 @Component({
   selector: 'app-glebe-list',
@@ -71,6 +72,21 @@ export class GlebeListComponent implements OnInit {
           this.getGlebes();
         }
       })
+  }
+
+  openDeleteGlebeModal(glebe: Glebe): void {
+    this.dialog.open(DeleteGlebeModalComponent, {
+      width: '30vw',
+      disableClose: true,
+      autoFocus: false,
+      data: {glebe: glebe}
+    })
+    .afterClosed()
+    .subscribe(async (response) => {
+      if(response.button === 'deletar'){
+        this.glebes = this.glebes.filter(obj => obj !== glebe);
+      }
+    })
   }
 
 }
