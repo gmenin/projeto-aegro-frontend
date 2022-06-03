@@ -1,0 +1,11 @@
+<div *ngIf="productions.length == 0">
+  <p>Sem fazendas</p>
+</div>
+
+<div *ngIf="productions.length != 0">
+  <table>
+      <tr *ngFor="let production of productions">
+          <td> {{ production.amount }} </td>
+      </tr>
+  </table>
+</div>
