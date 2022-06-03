@@ -30,7 +30,8 @@ export class FarmListComponent implements OnInit {
         console.log(responseData);
         this.farms = responseData;
       },
-      error: (e) => console.error(e)
+      error: (e) => console.error(e),
+      complete: () => console.log("Completed")
     })
   }
 

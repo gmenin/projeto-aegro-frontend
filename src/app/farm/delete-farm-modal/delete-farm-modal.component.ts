@@ -11,7 +11,7 @@ import { FarmService } from 'src/app/service/farm.service';
 export class DeleteFarmModalComponent implements OnInit {
 
   farm: Farm = this.data.farm;
-  
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {farm: Farm},
     private farmService: FarmService,
@@ -19,7 +19,7 @@ export class DeleteFarmModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {}
-  
+
   public deleteFarm(): void {
     this.farmService.deleteFarm(this.farm.id!).subscribe({
       next: (responseData) => {
@@ -30,7 +30,8 @@ export class DeleteFarmModalComponent implements OnInit {
         console.error(e),
         alert('Erro ao deletar Fazenda');
         this.closeDialog();
-      }
+      },
+      complete: () => console.log("Completed")
     });
   }
 

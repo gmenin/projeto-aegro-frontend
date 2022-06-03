@@ -1,0 +1,11 @@
+<div *ngIf="glebes.length == 0">
+  <p>Sem fazendas</p>
+</div>
+
+<div *ngIf="glebes.length != 0">
+  <table>
+      <tr *ngFor="let glebe of glebes">
+          <td> {{ glebe.name }} </td>
+      </tr>
+  </table>
+</div>
