@@ -69,6 +69,7 @@ export class ProductionListComponent implements OnInit {
       .afterClosed()
       .subscribe(async (response) => {
         if(response.button === 'salvar'){
+          this.getGlebe();
           this.getProductions();
         }
       })
@@ -85,6 +86,7 @@ export class ProductionListComponent implements OnInit {
     .subscribe(async (response) => {
       if(response.button === 'deletar'){
         this.productions = this.productions.filter(obj => obj !== production);
+        this.getGlebe();
       }
     })
   }
