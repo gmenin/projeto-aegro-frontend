@@ -13,7 +13,7 @@ export class AddGlebeModalComponent implements OnInit {
   glebeData: FormGroup = new FormGroup({});
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {farmId: string},
+    @Inject(MAT_DIALOG_DATA) public data: {farmId: string, glebe: Glebe},
     private fb: FormBuilder,
     private glebeService: GlebeService,
     private dialogRef: MatDialogRef<AddGlebeModalComponent>
@@ -21,17 +21,24 @@ export class AddGlebeModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.glebeData = this.fb.group({
-      name: [''],
-      area: ['']
+      name: [this.data.glebe == null ? '' : this.data.glebe.name],
+      area: [this.data.glebe == null ? '' : this.data.glebe.area]
     });
   }
 
   addGlebe(): void {
     const glebe: Glebe = this.glebeData.value;
 
-    // Create Glebe
-    this.createGlebe(glebe);
-
+    if (this.data.glebe == null) {
+      // Create Glebe
+      this.createGlebe(glebe);
+    } else {
+      // Update Glebe
+      if (typeof this.data.glebe.id != 'undefined'){
+        const id = this.data.glebe.id;
+        this.updateGlebe(id, glebe);
+      }
+    }
   }
 
   createGlebe(glebe: Glebe) {
@@ -40,6 +47,20 @@ export class AddGlebeModalComponent implements OnInit {
       error: (e) => {
         console.log(e);
         alert('Erro ao salvar Talhão');
+      },
+      complete: () => {
+        console.log("Completed"),
+        this.dialogRef.close({ button: 'salvar'});
+      }
+    });
+  }
+
+  updateGlebe(id: string, glebe: Glebe): void {
+    this.glebeService.updateGlebe(id, glebe).subscribe({
+      next: (responseData) => console.log(responseData),
+      error: (e) => {
+        console.log(e);
+        alert('Erro ao atualizar Talhão');
       },
       complete: () => {
         console.log("Completed"),

@@ -10,6 +10,7 @@
   <table>
       <tr *ngFor="let glebe of glebes">
           <td> {{ glebe.name }} </td>
+          <td><button (click)="openAddGlebeModal(glebe)">editar</button></td>
       </tr>
   </table>
 </div>

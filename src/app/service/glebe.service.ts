@@ -17,4 +17,8 @@ export class GlebeService {
   public addGlebe(farmId: string, glebe: Glebe) {
     return this.api.post<Glebe>(API_URL + '/farm/' + farmId + '/glebe', glebe);
   }
+
+  public updateGlebe(id: string, glebe: Glebe) {
+    return this.api.put<Glebe>(API_URL + '/glebe/' + id, glebe);
+  }
 }

@@ -58,13 +58,12 @@ export class GlebeListComponent implements OnInit {
     }
   }
 
-  openAddGlebeModal(): void {
-    // Create Glebe
+  openAddGlebeModal(glebe?: Glebe): void {
     this.dialog
       .open(AddGlebeModalComponent, {
         width: '30vw',
         disableClose: true,
-        data: {farmId: this.farmId}
+        data: {farmId: this.farmId, glebe: glebe}
       })
       .afterClosed()
       .subscribe(async (response) => {
