@@ -11,7 +11,7 @@ import { FarmService } from 'src/app/service/farm.service';
   styleUrls: ['./add-farm-modal.component.css']
 })
 export class AddFarmModalComponent implements OnInit {
-  farmData: FormGroup = new FormGroup({}); 
+  farmData: FormGroup = new FormGroup({});
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {farm: Farm},
@@ -28,11 +28,11 @@ export class AddFarmModalComponent implements OnInit {
 
   addFarm(): void {
     const farm: Farm = this.farmData.value;
-  
+
     if (this.data == null) {
       // Create Farm
-      this.createFarm(farm);  
-    } else {  
+      this.createFarm(farm);
+    } else {
       // Update Farm
       if (typeof this.data.farm.id != 'undefined'){
         const id = this.data.farm.id;
@@ -48,8 +48,10 @@ export class AddFarmModalComponent implements OnInit {
       next: (responseData) => console.log(responseData),
       error: (e) => {
         console.log(e);
-        alert('Erro ao salvar Fazenda');}
-    });  
+        alert('Erro ao salvar Fazenda');
+      },
+      complete: () => console.log("Completed")
+    });
   }
 
   updateFarm(id: string, farm: Farm): void {
@@ -57,8 +59,10 @@ export class AddFarmModalComponent implements OnInit {
       next: (responseData) => console.log(responseData),
       error: (e) => {
         console.log(e);
-        alert('Erro ao atualizar Fazenda');}
-    }); 
+        alert('Erro ao atualizar Fazenda');
+      },
+      complete: () => console.log("Completed")
+    });
   }
 
   closeDialog() {

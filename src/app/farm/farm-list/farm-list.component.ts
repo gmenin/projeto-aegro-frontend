@@ -24,13 +24,14 @@ export class FarmListComponent implements OnInit {
     this.getFarms();
   }
 
-  public getFarms(): void {
+  getFarms(): void {
     this.farmService.getAllFarms().subscribe({
       next: (responseData) => {
         console.log(responseData);
         this.farms = responseData;
       },
-      error: (e) => console.error(e)
+      error: (e) => console.error(e),
+      complete: () => console.log("Completed")
     })
   }
 

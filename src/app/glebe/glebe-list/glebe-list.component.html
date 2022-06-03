@@ -1,0 +1,17 @@
+<p>{{farm?.name}}</p>
+
+<button (click)="openAddGlebeModal()">novo talhão</button>
+
+<div *ngIf="glebes.length == 0">
+  <p>Sem talhões</p>
+</div>
+
+<div *ngIf="glebes.length != 0">
+  <table>
+      <tr *ngFor="let glebe of glebes">
+          <td> {{ glebe.name }} </td>
+          <td><button (click)="openAddGlebeModal(glebe)">editar</button></td>
+          <td><button (click)="openDeleteGlebeModal(glebe)">excluir</button></td>
+      </tr>
+  </table>
+</div>
