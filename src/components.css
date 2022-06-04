@@ -1,0 +1,180 @@
+/* Main Components */
+
+.main-content {
+  width: 70vw;
+  min-height: 80vh;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  border-radius: 15px;
+  border: 1px solid var(--light-secondary-color);
+  padding: 40px 30px;
+  box-sizing: border-box;
+}
+
+.content-header {
+padding-top: 0;
+padding-bottom: 2em;
+display: flex;
+align-items: center;
+justify-content: left;
+border-bottom: 1px solid var(--light-secondary-color);
+margin-bottom: 2em;
+}
+
+.content-header .icon {
+transform: scale(2);
+margin: 0 1em;
+}
+
+.content-header h1 {
+font-size: 3em;
+}
+
+.detail {
+margin-left: 4em;
+}
+
+.detail-title {
+margin: 0;
+}
+
+.content-header .detail-title {
+font-size: 1.3em;
+}
+
+.detail-subtitle {
+margin: 0;
+color: var(--secondary-color);
+font-weight: 500;
+}
+
+.content-header .detail-subtitle {
+font-size: 1em;
+}
+
+.table-list .detail-subtitle {
+font-size: 0.8em;
+}
+
+.content-header .detail-title::after {
+content: " kg/ha";
+}
+
+.div-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5em;
+  align-items: center;
+}
+
+.main-title {
+  font-size: 18px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.main-button {
+  background-color: var(--primary-color);
+  height:40px;
+  padding: 0 10px;
+  border-style: none;
+  border-radius: 2px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Nunito, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.5s all;
+}
+
+.main-button:hover {
+  background-color: var(--dark-primary-color);
+  cursor: pointer;
+}
+
+.main-button::before {
+  content: "+";
+  color: white;
+  font-size: 25px;
+  margin: 0 10px;
+}
+
+.no-content-div {
+text-align: center;
+}
+
+.no-content-div h1 {
+color: var(--secondary-color);
+font-weight: bold;
+}
+
+.no-content-div p {
+font-size: 1.3em;
+}
+
+.table-list {
+width: 100%;
+font-weight: 500;
+font-size: 1.2em;
+border-collapse: collapse;
+}
+
+.table-list tr {
+height: 5em;
+transition: 0.4s all;
+border-bottom: 2px solid var(--light-secondary-color);
+}
+
+.table-list tr:hover {
+background-color: var(--alternative-light-secondary-color);
+}
+
+.table-list tr:last-of-type {
+border-style: none;
+}
+
+.table-list td {
+text-align: center;
+padding: 0 5px;
+}
+
+.table-list td:nth-child(2) {
+width: 80%;
+text-align: start;
+padding-left: 20px;
+}
+
+.icon {
+vertical-align: middle;
+color: var(--secondary-color);
+}
+
+.static {
+padding: 5px;
+border-radius: 5px;
+transition: 0.4s all;
+}
+
+.table-list tr:hover .static {
+background-color: var(--light-secondary-color);
+}
+
+.action {
+vertical-align: middle;
+}
+
+.action:hover {
+cursor: pointer;
+}
+
+.ghost {
+visibility: hidden;
+transition: 0.1s all;
+}
+
+.table-list tr:hover .ghost {
+visibility: visible;
+}
