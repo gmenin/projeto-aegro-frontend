@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -23,7 +24,8 @@ export class ProductionListComponent implements OnInit {
     private productionService: ProductionService,
     private glebeService: GlebeService,
     private activatedRoute: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -89,6 +91,10 @@ export class ProductionListComponent implements OnInit {
         this.getGlebe();
       }
     })
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }
