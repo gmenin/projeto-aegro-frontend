@@ -22,14 +22,14 @@ export class AddFarmModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.farmData = this.fb.group({
-      name: [this.data == null ? '' : this.data.farm.name]
+      name: [this.data.farm == null ? '' : this.data.farm.name]
     });
   }
 
   addFarm(): void {
     const farm: Farm = this.farmData.value;
 
-    if (this.data == null) {
+    if (this.data.farm == null) {
       // Create Farm
       this.createFarm(farm);
     } else {
@@ -39,8 +39,6 @@ export class AddFarmModalComponent implements OnInit {
         this.updateFarm(id, farm);
       }
     }
-
-    this.dialogRef.close({ button: 'salvar'});
   }
 
   createFarm(farm: Farm): void {
@@ -50,7 +48,10 @@ export class AddFarmModalComponent implements OnInit {
         console.log(e);
         alert('Erro ao salvar Fazenda');
       },
-      complete: () => console.log("Completed")
+      complete: () => {
+        console.log("Completed"),
+        this.dialogRef.close({ button: 'salvar'});
+      }
     });
   }
 
@@ -61,7 +62,10 @@ export class AddFarmModalComponent implements OnInit {
         console.log(e);
         alert('Erro ao atualizar Fazenda');
       },
-      complete: () => console.log("Completed")
+      complete: () => {
+        console.log("Completed"),
+        this.dialogRef.close({ button: 'salvar'});
+      }
     });
   }
 

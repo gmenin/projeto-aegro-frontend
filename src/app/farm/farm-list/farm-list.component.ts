@@ -12,7 +12,6 @@ import { DeleteFarmModalComponent } from '../delete-farm-modal/delete-farm-modal
 })
 export class FarmListComponent implements OnInit {
 
-  displayedColumns: string[] = ['icon','name'];
   farms: Farm[] = [];
 
   constructor(
@@ -36,34 +35,18 @@ export class FarmListComponent implements OnInit {
   }
 
   openAddFarmModal(farm?: Farm): void {
-    if (typeof farm === 'undefined'){
-      // Create Farm
-      this.dialog
-        .open(AddFarmModalComponent, {
-          width: '30vw',
-          disableClose: true
-        })
-        .afterClosed()
-        .subscribe(async (response) => {
-          if(response.button === 'salvar'){
-            this.getFarms();
-          }
-        })
-    } else {
-      // Update Farm
-      this.dialog
-        .open(AddFarmModalComponent, {
-          width: '30vw',
-          disableClose: true,
-          data: {farm: farm}
-        })
-        .afterClosed()
-        .subscribe(async (response) => {
-          if(response.button === 'salvar'){
-            this.getFarms();
-          }
-        })
-    }
+    this.dialog
+      .open(AddFarmModalComponent, {
+        width: '30vw',
+        disableClose: true,
+        data: {farm: farm}
+      })
+      .afterClosed()
+      .subscribe(async (response) => {
+        if(response.button === 'salvar'){
+          this.getFarms();
+        }
+      })
   }
 
   openDeleteFarmModal(farm: Farm): void {
