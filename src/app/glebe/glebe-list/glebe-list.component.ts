@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
@@ -23,7 +24,8 @@ export class GlebeListComponent implements OnInit {
     private glebeService: GlebeService,
     private farmService: FarmService,
     private activatedRoute: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -89,6 +91,10 @@ export class GlebeListComponent implements OnInit {
         this.getFarm();
       }
     })
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }
