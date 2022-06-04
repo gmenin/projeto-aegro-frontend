@@ -12,14 +12,15 @@
     <button class="main-button" (click)="openAddProductionModal()">Nova Produção</button>
   </div>
 
-  <div *ngIf="productions.length == 0">
-    <p>Sem produções</p>
+  <div *ngIf="productions.length == 0" class="no-content-div">
+    <h1>Sem produções</h1>
+    <p>Registre uma produção para começar</p>
   </div>
 
   <div *ngIf="productions.length != 0">
     <table class="table-list">
       <tr *ngFor="let production of productions">
-          <td><mat-icon class="icon static" aria-label="home">map</mat-icon></td>
+          <td><mat-icon class="icon static" aria-label="filter_frames">filter_frames</mat-icon></td>
           <td>
             <div>
               <p class="detail-title"> {{ production.amount }} kg </p>

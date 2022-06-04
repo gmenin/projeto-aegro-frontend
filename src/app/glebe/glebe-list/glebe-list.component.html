@@ -12,14 +12,15 @@
     <button class="main-button" (click)="openAddGlebeModal()">Novo Talhão</button>
   </div>
 
-  <div *ngIf="glebes.length == 0">
-    <p>Sem talhões</p>
+  <div *ngIf="glebes.length == 0" class="no-content-div">
+    <h1>Sem talhões</h1>
+    <p>Registre um talhão para começar</p>
   </div>
 
   <div *ngIf="glebes.length != 0">
     <table class="table-list">
       <tr *ngFor="let glebe of glebes">
-          <td><mat-icon class="icon static" aria-label="home">map</mat-icon></td>
+          <td><mat-icon class="icon static" aria-label="map">map</mat-icon></td>
           <td>
             <div>
               <p class="detail-title"> {{ glebe.name }} </p>
