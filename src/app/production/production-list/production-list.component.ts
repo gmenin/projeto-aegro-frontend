@@ -93,7 +93,7 @@ export class ProductionListComponent implements OnInit {
     })
   }
 
-  goBack() {
+  goBack(): void {
     this.location.back();
   }
 

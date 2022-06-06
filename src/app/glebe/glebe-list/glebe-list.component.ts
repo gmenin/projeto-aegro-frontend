@@ -93,7 +93,7 @@ export class GlebeListComponent implements OnInit {
     })
   }
 
-  goBack() {
+  goBack(): void {
     this.location.back();
   }
 

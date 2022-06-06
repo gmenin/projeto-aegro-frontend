@@ -20,13 +20,13 @@ export class HttpService {
       .pipe(catchError(errorHandler));
   }
 
-  public post<T>(url: string, data: any): Observable<T> {
+  public post<T>(url: string, data: unknown): Observable<T> {
     return this.http
       .post<T>(url, data, headers)
       .pipe(catchError(errorHandler));
   }
 
-  public put<T>(url: string, data: any): Observable<T> {
+  public put<T>(url: string, data: unknown): Observable<T> {
     return this.http
       .put<T>(url, data, headers)
       .pipe(catchError(errorHandler));

@@ -36,7 +36,7 @@ export class DeleteGlebeModalComponent implements OnInit {
     });
   }
 
-  closeDialog() {
+  closeDialog(): void {
     this.dialogRef.close({ button: 'cancelar'});
   }
 
