@@ -2,6 +2,36 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 
+## Demo
+
+![home](https://user-images.githubusercontent.com/103016217/172236084-ac12a7df-2d8f-4f2b-a12e-ed81d53c99c8.png)
+
+![cadastrar-talhao](https://user-images.githubusercontent.com/103016217/172236140-78f3e218-999c-4e7e-989c-62aa72ddf30a.png)
+
+![producoes](https://user-images.githubusercontent.com/103016217/172236174-d151938c-ceba-4c37-96c8-9fe5efa68ba1.png)
+
+![deletar-producao](https://user-images.githubusercontent.com/103016217/172236186-9f449a7a-0607-4ad1-baad-5bff424be7e0.png)
+
+## Installation
+
+Update angular-cli to latest version as described on [Angular CLI](https://github.com/angular/angular-cli#updating-angular-cli):
+
+````
+npm uninstall -g angular-cli @angular/cli
+npm cache clean
+npm install -g @angular/cli@latest
+````
+Clone project from github:
+````
+git clone git@github.com:gmenin/projeto-aegro-frontend.git
+````
+Install app dependencies:
+````
+npm install
+````
+
+You can see current dependencies in [package.json](package.json) file.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
