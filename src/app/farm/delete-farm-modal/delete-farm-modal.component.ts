@@ -10,7 +10,7 @@ import { FarmService } from 'src/app/service/farm.service';
 })
 export class DeleteFarmModalComponent implements OnInit {
 
-  farm: Farm = this.data.farm;
+  farm!: Farm;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {farm: Farm},
@@ -18,7 +18,9 @@ export class DeleteFarmModalComponent implements OnInit {
     private dialogRef: MatDialogRef<DeleteFarmModalComponent>
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.farm = this.data.farm;
+  }
 
   deleteFarm(): void {
     this.farmService.deleteFarm(this.farm.id!).subscribe({
@@ -35,7 +37,7 @@ export class DeleteFarmModalComponent implements OnInit {
     });
   }
 
-  closeDialog() {
+  closeDialog(): void {
     this.dialogRef.close({ button: 'cancelar'});
   }
 

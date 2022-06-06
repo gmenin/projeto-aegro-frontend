@@ -69,7 +69,7 @@ export class AddGlebeModalComponent implements OnInit {
     });
   }
 
-  closeDialog() {
+  closeDialog(): void {
     this.dialogRef.close({ button: 'cancelar'});
   }
 

@@ -69,7 +69,7 @@ export class AddProductionModalComponent implements OnInit {
     });
   }
 
-  closeDialog() {
+  closeDialog(): void {
     this.dialogRef.close({ button: 'cancelar'});
   }
 

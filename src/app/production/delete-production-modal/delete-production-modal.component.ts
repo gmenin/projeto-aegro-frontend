@@ -36,7 +36,7 @@ export class DeleteProductionModalComponent implements OnInit {
     });
   }
 
-  closeDialog() {
+  closeDialog(): void {
     this.dialogRef.close({ button: 'cancelar'});
   }
 
