@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Farm } from 'src/app/interfaces/farm.model';
 import { FarmService } from 'src/app/service/farm.service';
+import { showAlert } from 'src/app/utils/util';
 
 @Component({
   selector: 'app-delete-farm-modal',
@@ -15,7 +17,8 @@ export class DeleteFarmModalComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {farm: Farm},
     private farmService: FarmService,
-    private dialogRef: MatDialogRef<DeleteFarmModalComponent>
+    private dialogRef: MatDialogRef<DeleteFarmModalComponent>,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +33,7 @@ export class DeleteFarmModalComponent implements OnInit {
       },
         error: (e) => {
         console.error(e),
-        alert('Erro ao deletar Fazenda');
+        showAlert(this.snackBar, 'Erro ao excluir Fazenda');
         this.closeDialog();
       },
       complete: () => console.log("Completed")
