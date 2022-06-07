@@ -1,8 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Production } from 'src/app/interfaces/production.model';
 import { ProductionService } from 'src/app/service/production.service';
+import { showAlert } from 'src/app/utils/util';
 
 @Component({
   selector: 'app-add-production-modal',
@@ -16,7 +18,8 @@ export class AddProductionModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: {glebeId: string, production: Production},
     private fb: FormBuilder,
     private productionService: ProductionService,
-    private dialogRef: MatDialogRef<AddProductionModalComponent>
+    private dialogRef: MatDialogRef<AddProductionModalComponent>,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -46,7 +49,7 @@ export class AddProductionModalComponent implements OnInit {
       next: (responseData) => console.log(responseData),
       error: (e) => {
         console.log(e);
-        alert('Erro ao salvar Produção');
+        showAlert(this.snackBar,'Erro ao salvar Produção');
       },
       complete: () => {
         console.log("Completed"),
@@ -60,7 +63,7 @@ export class AddProductionModalComponent implements OnInit {
       next: (responseData) => console.log(responseData),
       error: (e) => {
         console.log(e);
-        alert('Erro ao atualizar Produção');
+        showAlert(this.snackBar, 'Erro ao atualizar Produção');
       },
       complete: () => {
         console.log("Completed"),

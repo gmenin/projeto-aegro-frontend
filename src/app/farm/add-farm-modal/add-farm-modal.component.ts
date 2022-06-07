@@ -2,8 +2,10 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Farm } from 'src/app/interfaces/farm.model';
 import { FarmService } from 'src/app/service/farm.service';
+import { showAlert } from 'src/app/utils/util';
 
 @Component({
   selector: 'app-add-farm-modal',
@@ -17,7 +19,8 @@ export class AddFarmModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: {farm: Farm},
     private fb: FormBuilder,
     private farmService: FarmService,
-    private dialogRef: MatDialogRef<AddFarmModalComponent>
+    private dialogRef: MatDialogRef<AddFarmModalComponent>,
+    private snackBar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
@@ -46,7 +49,7 @@ export class AddFarmModalComponent implements OnInit {
       next: (responseData) => console.log(responseData),
       error: (e) => {
         console.log(e);
-        alert('Erro ao salvar Fazenda');
+        showAlert(this.snackBar, 'Erro ao salvar Fazenda');
       },
       complete: () => {
         console.log("Completed"),
@@ -60,7 +63,7 @@ export class AddFarmModalComponent implements OnInit {
       next: (responseData) => console.log(responseData),
       error: (e) => {
         console.log(e);
-        alert('Erro ao atualizar Fazenda');
+        showAlert(this.snackBar, 'Erro ao atualizar Fazenda');
       },
       complete: () => {
         console.log("Completed"),

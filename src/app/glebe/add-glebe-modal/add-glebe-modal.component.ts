@@ -1,8 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Glebe } from 'src/app/interfaces/glebe.model';
 import { GlebeService } from 'src/app/service/glebe.service';
+import { showAlert } from 'src/app/utils/util';
 
 @Component({
   selector: 'app-add-glebe-modal',
@@ -16,7 +18,8 @@ export class AddGlebeModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: {farmId: string, glebe: Glebe},
     private fb: FormBuilder,
     private glebeService: GlebeService,
-    private dialogRef: MatDialogRef<AddGlebeModalComponent>
+    private dialogRef: MatDialogRef<AddGlebeModalComponent>,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -46,7 +49,7 @@ export class AddGlebeModalComponent implements OnInit {
       next: (responseData) => console.log(responseData),
       error: (e) => {
         console.log(e);
-        alert('Erro ao salvar Talhão');
+        showAlert(this.snackBar, 'Erro ao salvar Talhão');
       },
       complete: () => {
         console.log("Completed"),
@@ -60,7 +63,7 @@ export class AddGlebeModalComponent implements OnInit {
       next: (responseData) => console.log(responseData),
       error: (e) => {
         console.log(e);
-        alert('Erro ao atualizar Talhão');
+        showAlert(this.snackBar, 'Erro ao atualizar Talhão');
       },
       complete: () => {
         console.log("Completed"),
